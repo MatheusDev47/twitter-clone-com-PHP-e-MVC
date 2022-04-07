@@ -1,0 +1,17 @@
+{
+    "name" : "miniframework/miniframework",
+    "require" : {
+        "php" : ">= 7.0"
+    },
+    "authors": [
+        {
+            "name" : "Matheus Costa"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "App/",
+            "MF\\" : "vendor/MF/"
+        }
+    } 
+}

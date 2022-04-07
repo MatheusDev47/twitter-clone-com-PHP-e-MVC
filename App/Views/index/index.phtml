@@ -1,0 +1,57 @@
+<div class="container-fluid h-100">
+	<div class="row h-100">
+    
+    <div class="col-md-6 banner">
+    	<div class="row h-100 align-items-center ps-5 pe-5">
+    		<div>
+				<div class="communicationItem">
+					<i class="fas fa-search fa-2x me-3"></i>
+					Siga o que lhe interessa.
+				</div>
+				<div class="communicationItem">
+					<i class="fas fa-user-friends fa-2x me-3"></i>
+					Saiba sobre o que as pessoas estão falando.
+				</div>
+				<div class="communicationItem">
+					<i class="far fa-comment fa-2x me-3"></i>
+					Participe da conversa.
+				</div>
+			</div>
+		</div>
+    </div>
+
+    <div class="col-md-6 pt-4 ps-5 pe-5">
+		<form action="/autenticar" method="POST">
+			<div class="row">
+				<div class="col">
+					<input type="email" class="form-control" placeholder="E-mail" name="email" required>
+				</div>
+				<div class="col">
+					<input type="password" class="form-control" placeholder="Senha" name="password" required>
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-2">Entrar</button>
+				</div>
+				<?php if ($this->view->login === 'error')  { ?>
+					<small class="text-danger">*Email ou senha inválido(s)</small>
+				<?php } ?>	
+
+				<?php if ($this->view->session === 'error')  { ?>
+					<small class="text-danger">*Faça login antes de acessar páginas protegidas</small>
+				<?php } ?>
+			</div>
+		</form>
+
+		<div class="row pt-5 ps-5 pe-5 subscribe">
+			<div class="col ps-5 pe-5">
+				<img src="/img/twitter_logo.png" />
+				<h1 class="title">Veja o que está acontecendo no mundo agora</h1>
+
+				<h2 class="mt-5 subtitle">Participe hoje do Twitter.</h2>
+				<a href="/inscreverse" class="btn btn-primary d-block w-100 mb-2 p-2">Inscrever-se</a>
+			</div>	
+		</div>
+    </div>
+
+  </div>
+</div>

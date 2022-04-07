@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg menu">
+	<div class="container">
+	  <div class="navbar-nav">
+	  	<a class="menuItem" href="/timeline">
+	  		Home
+	  	</a>
+
+	  	<a class="menuItem" href="/sair">
+	  		Sair
+	  	</a>
+			<img src="/img/twitter_logo.png" class="menuIco" />
+	  </div>
+	</div>
+</nav>
+
+<div class="container mt-5">
+	<div class="row pt-2">
+		
+		<div class="col-md-3">
+
+			<div class="perfil">
+				<div class="perfilTopo">
+
+				</div>
+
+				<div class="perfilPainel">
+					
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+							<span class="perfilPainelNome"><?= $_SESSION['name'] ?></span>
+						</div>
+					</div>
+
+					<div class="row mb-2">
+
+						<div class="col">
+							<span class="perfilPainelItem">Tweets</span><br />
+							<span class="perfilPainelItemValor"><?= $this->view->amountTweets['tweets'] ?></span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguindo</span><br />
+							<span class="perfilPainelItemValor"><?= $this->view->amountFollows['follows'] ?></span>
+						</div>
+
+						<div class="col">
+							<span class="perfilPainelItem">Seguidores</span><br />
+							<span class="perfilPainelItemValor"><?= $this->view->amountFollows['followers'] ?></span>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+			
+			<div class="row mb-2">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<form method="GET" action="/who_follow">
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" placeholder="Quem você está procurando" name="name">
+									<div class="input-group-append">
+										<button class="btn btn-primary" type="submit">Procurar</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<?php foreach($this->view->users as $users) { ?>
+				<div class="row mb-2">
+					<div class="col">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6">
+										<?= $users['name'] ?>
+									</div>
+									
+									<div class="col-md-6 d-flex justify-content-end">
+										<div>
+											<?php if ($users['follow_yn'] === 0) { ?>
+												<a href="/action?action=follow&id=<?=$users['id']?>" class="btn btn-success">Seguir</a>
+											<?php } ?>
+
+											<?php if ($users['follow_yn'] === 1) { ?>
+												<a href="/action?action=unfollow&id=<?=$users['id']?>" class="btn btn-danger">Deixar de seguir</a>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+		</div>
+	</div>
+</div>
